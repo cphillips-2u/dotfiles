@@ -108,7 +108,7 @@ function __promptline_left_prompt {
   slice_prefix="${b_bg}${sep}${b_fg}${b_bg}${space}" slice_suffix="$space${b_sep_fg}" slice_joiner="${b_fg}${b_bg}${alt_sep}${space}" slice_empty_prefix="${b_fg}${b_bg}${space}"
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "b" slices
-  __promptline_wrapper "$USER" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+  __promptline_wrapper "`basename \"$VIRTUAL_ENV\"`" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "c" header
   slice_prefix="${c_bg}${sep}${c_fg}${c_bg}${space}" slice_suffix="$space${c_sep_fg}" slice_joiner="${c_fg}${c_bg}${alt_sep}${space}" slice_empty_prefix="${c_fg}${c_bg}${space}"
@@ -162,7 +162,7 @@ function __promptline {
   local reset="${wrap}0${end_wrap}"
   local reset_bg="${wrap}49${end_wrap}"
   local a_fg="${wrap}38;5;7${end_wrap}"
-  local a_bg="${wrap}20;4;8${end_wrap}"
+  local a_bg="${wrap}48;5;8${end_wrap}"
   local a_sep_fg="${wrap}38;5;8${end_wrap}"
   local b_fg="${wrap}38;5;247${end_wrap}"
   local b_bg="${wrap}48;5;236${end_wrap}"

@@ -1,6 +1,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/cphillips/.oh-my-zsh
 
+ssh-add -A
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -51,14 +53,26 @@ HIST_STAMPS="mm/dd/yyyy"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git virtualenv)
 
-# User configuration
+######## User configuration ##########
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/ec2/ec2-api-tools-1.7.2.3/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/go/bin"
+# KUBERNETES EXPORTS
+KUBECONFIG=/path/to/kubeconfig
+KUBERNETES_PROVIDER=aws
+
+#Vault Exports
+export VAULT_ADDR=https://vault.prod.2u.com:8200/
+export VAULT_CACERT=$HOME/.certs/vault-ca.pem
+export VAULT_AUTH_GITHUB_TOKEN=$(cat ~/.secrets/vault-token)
+
+# Ansible Exports
+export ANSIBLE_HOSTS=/Users/cphillips/tools/ansible/inv/ec2.py
+export EC2_INI_PATH=/Users/cphillips/tools/ansible/inv/ec2.ini
 
 source $ZSH/oh-my-zsh.sh
 source ~/.my_shell.sh
 
+# export MANPATH="/usr/local/man:$MANPATH"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -83,4 +97,4 @@ source ~/.my_shell.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/sbin:$PATH:$(go env GOPATH)/bin"

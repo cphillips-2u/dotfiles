@@ -1,6 +1,7 @@
 " Vundle
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set clipboard=unnamed
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -10,6 +11,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'puppetlabs/puppet-syntax-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'hashivim/vim-terraform'
+Plugin 'vim-scripts/indentpython.vim'
 Bundle 'edkolev/tmuxline.vim'
 Bundle 'edkolev/promptline.vim'
 
@@ -35,9 +38,11 @@ filetype plugin indent on    " required
 "
 " Other VIM Settings
 syntax on
+set cursorline
 set laststatus=2
 set expandtab
 set shiftwidth=2
-set tabstop=2
 set number
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+highlight LineNr term=NONE cterm=NONE ctermfg=lightgrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+highlight CursorLine cterm=NONE ctermbg=darkgrey ctermfg=white
+highlight CursorLineNR cterm=bold ctermbg=darkgrey ctermfg=lightblue

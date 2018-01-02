@@ -7,7 +7,7 @@ ssh-add -A
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="cp-magic"
+ZSH_THEME=""
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -55,22 +55,11 @@ plugins=(git virtualenv)
 
 ######## User configuration ##########
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/go/bin"
-# KUBERNETES EXPORTS
-KUBECONFIG=/path/to/kubeconfig
-KUBERNETES_PROVIDER=aws
-
-#Vault Exports
-export VAULT_ADDR=https://vault.prod.2u.com:8200/
-export VAULT_CACERT=$HOME/.certs/vault-ca.pem
-export VAULT_AUTH_GITHUB_TOKEN=$(cat ~/.secrets/vault-token)
-
-# Ansible Exports
-export ANSIBLE_HOSTS=/Users/cphillips/tools/ansible/inv/ec2.py
-export EC2_INI_PATH=/Users/cphillips/tools/ansible/inv/ec2.ini
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/opt/go/libexec/bin/go"
 
 source $ZSH/oh-my-zsh.sh
 source ~/.my_shell.sh
+source <(kubectl completion zsh)
 
 # export MANPATH="/usr/local/man:$MANPATH"
 # You may need to manually set your language environment

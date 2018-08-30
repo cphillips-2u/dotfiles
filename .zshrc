@@ -1,6 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/cphillips/.oh-my-zsh
 
+eval "$(ssh-agent -s)"
 ssh-add -A
 
 # Set name of the theme to load.
@@ -55,7 +56,8 @@ plugins=(git virtualenv)
 
 ######## User configuration ##########
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/opt/go/libexec/bin/go"
+export GOPATH="$HOME/go/workspace"
+export PATH="/usr/local/opt/python/libexec/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/opt/go/libexec/bin/go:/usr/local/sbin:${GOPATH}/workspace:${GOPATH}/bin"
 
 source $ZSH/oh-my-zsh.sh
 source ~/.my_shell.sh
@@ -86,4 +88,8 @@ source <(kubectl completion zsh)
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="/usr/local/sbin:$PATH:$(go env GOPATH)/bin"
+
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/vault vault
+export PATH="/usr/local/opt/openssl/bin:$PATH"

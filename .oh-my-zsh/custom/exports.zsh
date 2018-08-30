@@ -9,5 +9,5 @@ export VAULT_CACERT=$HOME/.certs/vault-ca.pem
 export VAULT_AUTH_GITHUB_TOKEN=$(cat ~/.secrets/vault-token)
 
 # Ansible Exports
-export ANSIBLE_HOSTS=/Users/cphillips/tools/ansible/inv/ec2.py
-export EC2_INI_PATH=/Users/cphillips/tools/ansible/inv/ec2.ini
+export ANSIBLE_INVENTORY=/Users/cphillips/work/ansible/inventory/ec2.py
+export EC2_INI_PATH=/Users/cphillips/work/ansible/inventory/ec2.ini

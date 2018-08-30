@@ -100,16 +100,12 @@ function kube-pod-wan
 
 
 # A quick and dirty way to show the resource availability in a kube cluster
-#TODO: This should be re-written and expanded
-function kube-capacity {
-  local nodes=$(kubectl get no --no-headers | awk '$0 !~ /Disabled/ {print $1}')
-  for node in $nodes; do
-    echo -n "Node ${node} - "
-    kubectl describe no $node \
-      | grep -A4 'Allocated resources' \
-      | tail -n1 \
-      | awk '{print "CPU Requests " $1 " " $2 " Memory Requests: " $5 " " $6}'
-  done
+kubeCapacity () {
+    for node in $(kubectl get no --no-headers | awk '$0 !~ /Disabled/ {print $1}')
+    do
+        echo -n "Node ${node} - "
+        kubectl describe no $node | grep --color -A4 'Allocated resources' | tail -n1 | awk '{print "CPU Requests " $1 " " $2 " Memory Requests: " $5 " " $6}'
+    done
 }
 
 
@@ -136,4 +132,15 @@ function kube-shell
 
 
   kubectl exec -it $pod $container -- env COLUMNS=$cols LINES=$lines TERM=$term "$cmd"
+}
+
+# Search ECR for repositories!
+aws-ecr-search()
+{
+  local search_string=${1};
+  if [[ -z "$search_string" ]]; then
+    aws ecr describe-repositories | jq '.repositories|sort_by(.repositoryName)'
+  else
+    aws ecr describe-repositories | jq --arg search_string "$search_string" '.repositories[]|select(.repositoryName | contains($search_string))'
+  fi
 }

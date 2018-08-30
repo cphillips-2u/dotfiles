@@ -12,8 +12,8 @@ Plugin 'puppetlabs/puppet-syntax-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'hashivim/vim-terraform'
-Plugin 'vim-scripts/indentpython.vim'
-Bundle 'edkolev/tmuxline.vim'
+Plugin 'avakhov/vim-yaml'
+Plugin 'fatih/vim-go'
 Bundle 'edkolev/promptline.vim'
 
 "Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -21,7 +21,13 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'ravenpower'
 let g:Powerline_symbols = 'fancy'
 
-" All of your Plugins must be added before the following line
+" Terraform plugin
+let g:terraform_align=1
+let g:terraform_fold_sections=1
+let g:terraform_remap_spacebar=1
+autocmd FileType terraform setlocal commentstring=#%s
+
+" All of your Plugins must rform_fold_sections=1e added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -38,6 +44,7 @@ filetype plugin indent on    " required
 "
 " Other VIM Settings
 syntax on
+set pastetoggle=<F3>
 set cursorline
 set laststatus=2
 set expandtab
